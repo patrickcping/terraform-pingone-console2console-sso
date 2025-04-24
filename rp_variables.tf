@@ -11,11 +11,16 @@ variable "rp_jit_provisioning_population_id" {
 }
 
 variable "rp_identity_provider_name" {
-  type = string
+  type    = string
   default = "PingOne OP"
 }
 
 variable "rp_identity_provider_description" {
-  type = string
+  type    = string
   default = null
+}
+
+variable "rp_administrator_security_method" {
+  type    = string
+  default = "EXTERNAL"
 }

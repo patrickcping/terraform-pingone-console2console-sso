@@ -1,9 +1,9 @@
-resource "pingone_image" "ping" {
+resource "pingone_image" "op_application" {
   provider = pingone.op
 
   environment_id = var.op_environment_id
 
-  image_file_base64 = filebase64(format("%s/image-logo.png", path.module))
+  image_file_base64 = var.op_application_image_file_base64 != null ? var.op_application_image_file_base64 : filebase64(format("%s/image-logo.png", path.module))
 }
 
 resource "pingone_application" "op_application" {
@@ -15,8 +15,8 @@ resource "pingone_application" "op_application" {
   enabled        = true
 
   icon = {
-    id   = pingone_image.ping.id
-    href = pingone_image.ping.uploaded_image.href
+    id   = pingone_image.op_application.id
+    href = pingone_image.op_application.uploaded_image.href
   }
 
   hidden_from_app_portal = false

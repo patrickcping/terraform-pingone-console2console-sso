@@ -1,3 +1,9 @@
+resource "pingone_image" "pingone" {
+  environment_id = var.rp_environment_id
+
+  image_file_base64 = var.rp_idp_image_file_base64 != null ? var.rp_idp_image_file_base64 : filebase64(format("%s/image-logo.png", path.module))
+}
+
 resource "pingone_identity_provider" "pingone" {
   environment_id = var.rp_environment_id
 
@@ -6,8 +12,8 @@ resource "pingone_identity_provider" "pingone" {
   enabled     = true
 
   icon = {
-    id   = pingone_image.ping.id
-    href = pingone_image.ping.uploaded_image.href
+    id   = pingone_image.pingone.id
+    href = pingone_image.pingone.uploaded_image.href
   }
 
   registration_population_id = var.rp_jit_provisioning_population_id

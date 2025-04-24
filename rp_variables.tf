@@ -24,3 +24,8 @@ variable "rp_administrator_security_method" {
   type    = string
   default = "EXTERNAL"
 }
+
+variable "rp_idp_image_file_base64" {
+  type    = string
+  default = null
+}

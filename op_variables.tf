@@ -17,3 +17,8 @@ variable "op_application_group_access_ids" {
 variable "op_base_domain" {
   type = string
 }
+
+variable "op_application_image_file_base64" {
+  type    = string
+  default = null
+}
